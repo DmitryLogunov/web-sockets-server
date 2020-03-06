@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "port",
+    "logSettings",
+    "rabbitmq"
+  ],
+  "properties": {
+    "port": {
+      "type": "integer"
+    },
+    "reqGuidHeader": {
+      "type": "string"
+    },
+    "defaultLimit": {
+      "type": "integer"
+    },
+    "logSettings": {
+      "$ref": "#/definitions/logSettings"
+    },
+    "rabbitmq": {
+      "$ref": "#/definitions/rabbitmq"
+    }
+  },
+  "definitions": {
+    "logSettings": {
+      "type": "object",
+      "required": [
+        "level",
+        "format",
+        "colorize"
+      ],
+      "properties": {
+        "level": {
+          "type": "string"
+        },
+        "format": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2
+        },
+        "colorize": {
+          "type": "boolean"
+        }
+      }
+    },
+    "rabbitmq": {
+      "type": "object",
+      "required": [
+        "url",
+        "exchange"
+      ],
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "exchange": {
+          "type": "string"
+        },
+        "queuesDurable": {
+          "type": "boolean"
+        },
+        "checkAreWsConnectionsAlive": {
+          "type": "boolean"
+        },
+        "closeNotAliveWsConnections": {
+          "type": "boolean"
+        },
+        "autoDeleteQueues": {
+          "type": "boolean"
+        },
+        "wsConnectionsCheckingInterval": {
+          "type": "number"
+        },
+        "debugMode": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}
